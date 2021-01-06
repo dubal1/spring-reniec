@@ -17,7 +17,7 @@ public class SpringReniecApplication {
     }
 
     /**
-     * @param registry
+     * @param registry .
      */
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("swagger-ui.html")
