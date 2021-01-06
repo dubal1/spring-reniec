@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reniec
+  labels:
+    app: reniec
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reniec
+  template:
+    metadata:
+      labels:
+        app: reniec
+    spec:
+      containers:
+        - name: reniec
+          image: acrjlgc17.azurecr.io/reniec
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+      imagePullSecrets:
+        - name: regcred
+---
+#############################
+#############################
+kind: Service
+apiVersion: v1
+metadata:
+  name: reniec
+spec:
+  selector:
+    app: reniec
+  ports:
+    - port: 9002
+      targetPort: 9002
+  type: LoadBalancer
