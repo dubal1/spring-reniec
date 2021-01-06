@@ -1,4 +1,4 @@
-package com.everis.reniec.app.dto;
+package com.everis.reniec.app.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

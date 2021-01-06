@@ -1,6 +1,6 @@
 package com.everis.reniec.app.repository;
 
-import com.everis.reniec.app.dto.Person;
+import com.everis.reniec.app.model.Person;
 import reactor.core.publisher.Mono;
 import retrofit2.http.Body;
 import retrofit2.http.POST;

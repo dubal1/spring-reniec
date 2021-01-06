@@ -1,6 +1,7 @@
 package com.everis.reniec.app.service.impl;
 
-import com.everis.reniec.app.dto.Person;
+import com.everis.reniec.app.model.Dummy;
+import com.everis.reniec.app.model.Person;
 import com.everis.reniec.app.repository.ReniecRepository;
 import com.everis.reniec.app.service.IReniecService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,10 @@ public class ReniecServiceImpl implements IReniecService {
      * @return savePersonConsumer.
      */
     @Override
-    public Mono<Person> savePersonConsumer(final Person person) {
-        return repository.savePerson(person);
+    public Mono<Dummy> savePersonConsumer(final Person person) {
+        return repository.savePerson(person)
+                .filter(p -> !p.getBlacklist() && !p.getFingerprint())
+                .map(per -> new Dummy("Reniec", true));
     }
 
 }
